@@ -19,7 +19,7 @@ After copying, replace these placeholders in all copied template files:
 - docker-project-name: e.g., *ls-project-name*
 
 ## Prepare project for containerization
-Run this command to generate a Gemfile.lock (if not already present)
+Run this command to generate a Gemfile.lock (if not already present or after adding to Gemfile)
 
 `docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app docker-ruby-version bundle install`
 
