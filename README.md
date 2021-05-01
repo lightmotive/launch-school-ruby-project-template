@@ -33,17 +33,17 @@ Run this once on each system to build the image:
 ### Main commands: run or start
 
 #### run
-This command runs the container:
+This command runs the container with file sync (bind mount):
 
-`docker run -it --name ls-temp docker-project-name`
-
-- `-it` runs the container in interactive TTY mode (so you can )
-- The container will stop and return control to the local shell after running the specified command.
-- Data is retained when the container stops, but not when it is removed.
-  - If you want Docker to remove the container on exit, include the `--rm` option.
+- `docker run -it --name ls-temp -v "$PWD":/usr/src/app -w /usr/src/app docker-project-name`
+  - `-it` runs the container in interactive TTY mode (so you can ).
+  - Remove `-v ...` argument to run without file sync.
+  - The container will stop and return control to the local shell after running the specified command. The Dockerfile specifies `zsh` as the default command.
+  - Data is retained when the container stops, but not when it is removed.
+    - If you want Docker to remove the container on exit, add the `--rm` option.
 
 #### start
-This command starts the stopped container (with retained data):
+This command starts the stopped container (with retained config and data):
 
 `docker start -i ls-temp`
 
