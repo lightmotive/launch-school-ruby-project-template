@@ -15,8 +15,7 @@ If you need a container for production use, consider the [official Docker Ruby i
 4. Install the [VS Code Remote Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
 
 ### Build and run
-1. Copy the **devcontainer** directory and **Gemfile** to your project folder
-   - Rename devcontainer to .devcontainer.
+1. Copy the **devcontainer** directory project folder and rename devcontainer to .devcontainer so VS Code can detect it automatically.
 2. Navigate to the directory that contains the .devcontainer folder in your (Linux) shell, then enter `code .`. Visual Studio will prompt you to open the folder in the dev container, automatically building the image if it doesn't already exist.
    - Your project files will automatically sync between the container and your host file system.
 

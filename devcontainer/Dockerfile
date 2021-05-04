@@ -18,10 +18,8 @@ RUN ["chsh", "-s", "$(which zsh)"]
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
 # Install additional gems.
-# RUN gem install rubocop
-
-# Install gems using Bundler (via Gemfile)
-RUN bundle install
+RUN gem install rubocop
+RUN gem install pry
 
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
