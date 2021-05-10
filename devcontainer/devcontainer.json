@@ -17,7 +17,10 @@
 	"settings": { 
 		"#terminal.integrated.defaultProfile.linux#": "/usr/bin/zsh",
 		"ruby.intellisense": "rubyLocate",
-		"ruby.useLanguageServer": true
+		"ruby.useLanguageServer": true,
+		"[ruby]": {
+			"editor.defaultFormatter": "misogi.ruby-rubocop"
+		}
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
