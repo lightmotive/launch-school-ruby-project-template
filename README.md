@@ -19,5 +19,13 @@ If you need a container for production use, consider the [official Docker Ruby i
 2. Navigate to the directory that contains the .devcontainer folder in your (Linux) shell, then enter `code .`. Visual Studio will prompt you to open the folder in the dev container, automatically building the image if it doesn't already exist.
    - Your project files will automatically sync between the container and your host file system.
 
+## Start from 'scratch'
+After completing the pre-requisites above:
+1. Hit F1 (Show All Commands shortcut) | Type/select: >Remote-Containers: Add Development Container Configuration Files...
+2. Type *Ruby* and select it.
+   - There's also Ruby on Rails and others; select *Show All Definitions...*, then search again to view.
+3. Select a version.
+4. Customize the dev container, including VS Code settings, to your liking.
+
 ### Learn more
 - [Develop with containers (Microsoft)](https://code.visualstudio.com/learn/develop-cloud/containers)
