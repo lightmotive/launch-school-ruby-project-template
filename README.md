@@ -15,9 +15,15 @@ If you need a container for production use, consider the [official Docker Ruby i
 4. Install the [VS Code Remote Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
 
 ### Build and run
-1. Copy the **devcontainer** directory project folder and rename devcontainer to .devcontainer so VS Code can detect it automatically.
+1. Copy the **devcontainer** directory to a project folder and rename devcontainer to **.devcontainer** so VS Code can detect it automatically.
+   - The container includes Ruby v3-latest with rvm, basic Gems, and VS Code extensions.
 2. Navigate to the directory that contains the .devcontainer folder in your (Linux) shell, then enter `code .`. Visual Studio will prompt you to open the folder in the dev container, automatically building the image if it doesn't already exist.
    - Your project files will automatically sync between the container and your host file system.
+
+### Install and run a specific Ruby version with rvm
+1. Install with a command like this: `rvm install ruby-x.x.x` (ruby-major.minor.patch)
+2. Set the default Ruby version with a command like this: `rvm --default use ruby-x.x.x`
+3. Revert to the system-default Ruby version (run Ruby programs without rvm): `rvm --default use system`
 
 ## Start from 'scratch'
 After completing the pre-requisites above:
