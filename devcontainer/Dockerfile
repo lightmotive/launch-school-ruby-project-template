@@ -24,3 +24,6 @@ RUN gem install pry-doc
 
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
+
+# Pry configuration
+RUN printf "require 'pry-doc'" > "/home/vscode/.pryrc"
