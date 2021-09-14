@@ -27,7 +27,8 @@
 	"extensions": [
 		"rebornix.Ruby",
 		"misogi.ruby-rubocop",
-		"yzhang.markdown-all-in-one"
+		"yzhang.markdown-all-in-one",
+		"maciejdems.terminal-sync"
 	],
 	
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
