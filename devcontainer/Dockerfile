@@ -21,6 +21,7 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 RUN gem install rubocop
 RUN gem install pry
 RUN gem install pry-doc
+RUN gem install pry-byebug
 
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
