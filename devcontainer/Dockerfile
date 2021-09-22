@@ -27,5 +27,8 @@ RUN gem install pry-byebug
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
 
+# Switch to container home directory
+# WORKDIR /home/vscode/
+
 # Pry configuration
-RUN printf "require 'pry-doc'" > "/home/vscode/.pryrc"
+RUN wget -P "/home/vscode/" https://raw.githubusercontent.com/lightmotive/ls-ruby-project-template/main/.pryrc
