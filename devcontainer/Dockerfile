@@ -19,7 +19,8 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 
 # Install additional gems.
 RUN gem install rubocop
-RUN gem install pry
+RUN gem install pry -v 0.13.0
+# pry-byebug requires pry (~> 0.13.0)
 RUN gem install pry-doc
 RUN gem install pry-byebug
 
