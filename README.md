@@ -10,9 +10,11 @@ If you need a container for production use, consider the [official Docker Ruby i
 ### Pre-requisites (Mac, Windows 10, Linux)
 1. [Install Visual Studio Code](https://code.visualstudio.com/).
 2. If Windows 10, [install and configure WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
-3. Install [Docker Desktop](https://www.docker.com/products/docker-desktop).
+3. If Mac, hit *Shift-Command-P*, type `Shell Command`, and select *Shell Command: Install 'code' command in PATH* option.
+   1. It's also essential to drag VS Code into the Applications folder.
+4. Install [Docker Desktop](https://www.docker.com/products/docker-desktop).
    - If Windows 10: enable the WSL2 integration for best performance.
-4. Install the [VS Code Remote Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+5. Install the [VS Code Remote Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
 
 ### Build and run
 1. Copy the **devcontainer** directory to a project folder and rename devcontainer to **.devcontainer** so VS Code can detect it automatically.
