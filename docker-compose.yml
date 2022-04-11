@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  ruby-container:
+    image: ruby-container
+    volumes:
+      # Mount the root folder
+      - .:/workspace:cached
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    build:
+      context: .
+      dockerfile: ./.devcontainer/Dockerfile
+      args:
+        VARIANT: 3-bullseye
+        NODE_VERSION: none

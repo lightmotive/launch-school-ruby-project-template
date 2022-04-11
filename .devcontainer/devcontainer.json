@@ -1,17 +1,12 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.166.1/containers/ruby
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.231.5/containers/ruby
 {
-  "name": "Ruby",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "args": {
-      // Update 'VARIANT' to pick a Ruby version: 3, 3.0, 2, 2.7, 2.6, 2.5
-      "VARIANT": "3",
-      // Options
-      "INSTALL_NODE": "false",
-      "NODE_VERSION": "lts/*"
-    }
-  },
+  "name": "Ruby Project Template",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "ruby-container",
+  "shutdownAction": "none",
+  // Open the sub-folder with the source code
+  "workspaceFolder": "/workspace/src",
 
   // Set *default* container specific settings.json values on container create.
   "settings": {
@@ -22,8 +17,8 @@
       "editor.defaultFormatter": "misogi.ruby-rubocop"
     },
     "plantuml.urlFormat": "svg",
-    "plantuml.exportOutDir": "diagrams/out",
-    "plantuml.diagramsRoot": "diagrams/src",
+    "plantuml.exportOutDir": "/",
+    "plantuml.diagramsRoot": "/",
     "plantuml.exportFormat": "svg",
     "plantuml.server": "https://www.plantuml.com/plantuml",
     "plantuml.render": "PlantUMLServer"
@@ -44,6 +39,6 @@
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": "ruby --version",
 
-  // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+  // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "vscode"
 }
