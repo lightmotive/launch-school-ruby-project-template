@@ -7,9 +7,9 @@ Projects based on this template will use Docker to quickly provide a consistent 
 
 If you need a container for production use, consider the [official Docker Ruby image](https://hub.docker.com/_/ruby) as a starting point.
 
-### Pre-requisites (Mac, Windows 10, Linux)
+### Pre-requisites (Mac, Windows 10/11, Linux)
 1. [Install Visual Studio Code](https://code.visualstudio.com/).
-2. If Windows 10, [install and configure WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+2. If Windows 10, [install and configure WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10). If Windows 11, search for a guide to do the same.
 3. If Mac, hit *Shift-Command-P*, type `Shell Command`, and select *Shell Command: Install 'code' command in PATH* option.
    1. It's also essential to drag VS Code into the Applications folder.
 4. Install [Docker Desktop](https://www.docker.com/products/docker-desktop).
