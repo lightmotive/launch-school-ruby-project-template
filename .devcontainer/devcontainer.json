@@ -20,7 +20,7 @@
     "plantuml.exportOutDir": "/",
     "plantuml.diagramsRoot": "/",
     "plantuml.exportFormat": "svg",
-    "plantuml.server": "https://www.plantuml.com/plantuml",
+    "plantuml.server": "http://plantuml:8080",
     "plantuml.render": "PlantUMLServer"
   },
 

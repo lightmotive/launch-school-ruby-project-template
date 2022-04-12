@@ -13,3 +13,17 @@ services:
       args:
         VARIANT: 3-bullseye
         NODE_VERSION: none
+    networks:
+      - plantuml-server
+
+  plantuml-container:
+    image: 'plantuml/plantuml-server:jetty'
+    networks:
+      plantuml-server:
+        aliases:
+          - plantuml
+    ports:
+      - '8080'
+
+networks:
+  plantuml-server:
