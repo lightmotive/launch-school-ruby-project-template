@@ -32,7 +32,9 @@ If you need a container for production use, consider the [official Docker Ruby i
         - Ruby dev container (service)
         - PlantUML container (service)
 2. Navigate to the project folder that contains the `.devcontainer` folder in your (Linux) shell, then enter `code .`. Visual Studio will prompt you to open the folder in a dev container, automatically building the image if it doesn't already exist and opening the `src` folder.
-   - Your project files will automatically sync between the container and your host file system.
+   - Clone one or more repositories to the `src` folder.
+   - Your project files will automatically sync between the container and your host file system, so the container can restart without data loss.
+   - Consider incorporating the container configuration into specific projects that need customized containers, in which case open those projects in a separate VS Code window that runs in its own container.
 
 ### Install and run a specific Ruby version with rvm
 
