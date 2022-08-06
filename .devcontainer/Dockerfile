@@ -16,6 +16,7 @@ RUN gem install pry -v 0.13.0
 # pry-byebug requires pry (~> 0.13.0)
 RUN gem install pry-doc
 RUN gem install pry-byebug
+RUN gem install minitest
 
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
