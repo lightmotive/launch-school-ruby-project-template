@@ -19,6 +19,7 @@ RUN gem install pry-byebug
 RUN gem install minitest
 RUN gem install minitest-reporters
 RUN gem install simplecov
+RUN gem install rake
 
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
