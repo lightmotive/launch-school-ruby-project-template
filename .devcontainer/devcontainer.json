@@ -2,12 +2,13 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.231.5/containers/ruby
 {
   "name": "Ruby Project Template",
-  "dockerComposeFile": ["../docker-compose.yml"],
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
   "service": "ruby-container",
   "shutdownAction": "none",
   // Open the sub-folder with the source code
   "workspaceFolder": "/workspace/src",
-
   // Set *default* container specific settings.json values on container create.
   "settings": {
     "terminal.integrated.defaultProfile.linux": "zsh",
@@ -23,22 +24,19 @@
     "plantuml.server": "http://plantuml:8080",
     "plantuml.render": "PlantUMLServer"
   },
-
   // Add the IDs of extensions you want installed when the container is created.
   "extensions": [
     "rebornix.Ruby",
     "misogi.ruby-rubocop",
     "yzhang.markdown-all-in-one",
     "maciejdems.terminal-sync",
-    "jebbs.plantuml"
+    "jebbs.plantuml",
+    "ms-vscode.live-server"
   ],
-
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
-
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": "ruby --version",
-
   // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "vscode"
 }
