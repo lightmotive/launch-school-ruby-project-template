@@ -24,9 +24,10 @@ RUN gem install minitest
 RUN gem install minitest-reporters
 RUN gem install simplecov
 RUN gem install rake
+# VS Code debugging support:
+# - Details: https://github.com/rubyide/vscode-ruby/blob/main/docs/debugger.md
+RUN gem install ruby-debug-ide
+RUN gem install debase --pre
 
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
-
-# Pry configuration
-RUN wget -P "/home/vscode/" https://raw.githubusercontent.com/lightmotive/ls-ruby-project-template/main/.pryrc

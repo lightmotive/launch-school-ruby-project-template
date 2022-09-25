@@ -20,12 +20,15 @@ If you need a container for production use, consider the [official Docker Ruby i
 
 ### Build and run
 
-1. Copy the following to a project folder:
+1. Copy the following to a project's root folder:
    1. **.devcontainer** folder
       1. In the *devcontainer.json* file in this folder, edit the `"name"` property to something that makes sense for the project.
       - `Dockerfile` declaratively defines container build, including Ruby v3-bullseye, rvm, zsh, Gems, Pry configuration, and more.
       - `devcontainer.json` configures VS Code and coordinates Docker Compose.
-   2. **src** folder (code repos will go here)
+      - `.vscode` folder. If you need to make persistent changes to the contents of this folder, or to anything else in this repository, be sure to fork or copy this repo and modify there for your purposes. **This folder will completely replace anything in `/workspace/src/.vscode` when the container is created or rebuilt.**
+      - `.pryrc`: *pry* Gem configuration. Copied to home folder via `postCreateCommand.sh`.
+      - `postCreateCommand.sh`: devcontainer.json's `postCreateCommand` executes this after the container is created.
+   2. **src** folder: create or clone code repos here.
    3. **docker-compose.yml**
       - Configures:
         - Shared network
@@ -42,7 +45,29 @@ If you need a container for production use, consider the [official Docker Ruby i
 2. Set the default Ruby version with a command like this: `rvm --default use ruby-x.x.x`
 3. Revert to the system-default Ruby version (run Ruby programs without rvm): `rvm --default use system`
 
-## Start from 'scratch'
+### Debug
+
+This template is configured to support both pry/pry-byebug (REPL debugger) and VS Code debugging out of the box.
+
+#### Debug with pry-byebug
+
+It's worth knowing how to debug using the REPL-based Pry, especially Pry-ByeBug, because the VS Code debugger may not do everything you need it to do, especially with complex or remote dev environments.
+
+[Learn more here](https://github.com/deivid-rodriguez/pry-byebug).
+
+#### Debug with VS Code
+
+Hit F5 to begin debugging the focused open file using the default configuration.
+
+VS Code offers a number of advantages over REPL-based debugging, such as:
+
+- Streamlined and source code-integrated debugging experience: hover over source code variables to view values.
+- Set temporary breakpoints and start debugging with a quick F5 press; no need to modify source code with `require 'pry'` and `binding.pry` statements.
+- View a list of variables and their values in a breakpoint's scope.
+
+[Learn more here](https://code.visualstudio.com/docs/editor/debugging).
+
+## Create your own Ruby dev container
 
 After completing the pre-requisites above:
 
