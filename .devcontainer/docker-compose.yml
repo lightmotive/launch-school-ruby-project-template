@@ -3,16 +3,19 @@ version: '3.4'
 services:
   ruby-container:
     image: ruby-container
-    volumes:
-      # Mount the root folder
-      - .:/workspace:cached
-    command: /bin/sh -c "while sleep 1000; do :; done"
+
+    command: sleep infinity
+
     build:
-      context: .
-      dockerfile: ./.devcontainer/Dockerfile
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
       args:
         VARIANT: 3.1-bullseye
         NODE_VERSION: lts/*
+
+    volumes:
+      - ../..:/workspaces:cached
+
     networks:
       - plantuml-server
     ports:

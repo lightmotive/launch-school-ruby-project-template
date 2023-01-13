@@ -1,7 +1,7 @@
-cd /workspace
-rm -rf ./src/.vscode
-cp -R ./.devcontainer/.vscode ./src
-cp -R ./.devcontainer/.pryrc /home/vscode/
+# Current working directory: "workspaceFolder" set in devcontainer.json
+rm -rf ./.vscode
+cp -R ../.devcontainer/.vscode ./
+cp -R ../.devcontainer/.pryrc /home/vscode/
 
 # Bundler dev env config
 bundle config set --local without production

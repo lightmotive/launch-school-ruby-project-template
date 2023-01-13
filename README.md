@@ -25,15 +25,16 @@ If you need a container for production use, consider the [official Docker Ruby i
       1. In the *devcontainer.json* file in this folder, edit the `"name"` property to something that makes sense for the project.
       - `Dockerfile` declaratively defines container build, including Ruby v3-bullseye, rvm, zsh, Gems, Pry configuration, and more.
       - `devcontainer.json` configures VS Code and coordinates Docker Compose.
-      - `.vscode` folder. If you need to make persistent changes to the contents of this folder, or to anything else in this repository, be sure to fork or copy this repo and modify there for your purposes. **This folder will completely replace anything in `/workspace/src/.vscode` when the container is created or rebuilt.**
-      - `.pryrc`: *pry* Gem configuration. Copied to home folder via `postCreateCommand.sh`.
-      - `postCreateCommand.sh`: devcontainer.json's `postCreateCommand` executes this after the container is created.
-   2. **src** folder: create or clone code repos here.
-   3. **docker-compose.yml**
-      - Configures:
+      - `docker-compose.yml` configures:
         - Shared network
         - Ruby dev container (service)
         - PlantUML container (service)
+      - `.vscode` folder. If you need to make persistent changes to the contents of this folder, or to anything else in this repository, be sure to fork or copy this repo and modify there for your purposes. **This folder will completely replace anything in `{workspaceFolder}/.vscode` when the container is created or rebuilt.**
+      - `.pryrc`: *pry* Gem configuration. Copied to home folder via `postCreateCommand.sh`.
+      - `postCreateCommand.sh`: devcontainer.json's `postCreateCommand` executes this after the container is created.
+   2. **src** folder
+      - Create or clone code repos here.
+      - VS Code uses this folder the Workspace folder, which is the Explorer root.
 2. Navigate to the project folder that contains the `.devcontainer` folder in your (Linux) shell, then enter `code .`. Visual Studio will prompt you to open the folder in a dev container, automatically building the image if it doesn't already exist and opening the `src` folder.
    - Clone one or more repositories to the `src` folder.
    - Your project files will automatically sync between the container and your host file system, so the container can restart without data loss.

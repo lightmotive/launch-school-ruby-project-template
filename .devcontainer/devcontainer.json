@@ -3,12 +3,11 @@
 {
   "name": "Ruby Project Template",
   "dockerComposeFile": [
-    "../docker-compose.yml"
+    "docker-compose.yml"
   ],
   "service": "ruby-container",
   "shutdownAction": "none",
-  // Open the sub-folder with the source code
-  "workspaceFolder": "/workspace/src",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}/src",
   // Set *default* container specific settings.json values on container create.
   "settings": {
     "terminal.integrated.defaultProfile.linux": "zsh",
@@ -36,7 +35,7 @@
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "bash -i /workspace/.devcontainer/postCreateCommand.sh",
+  "postCreateCommand": "bash -i /workspaces/${localWorkspaceFolderBasename}/.devcontainer/postCreateCommand.sh",
   // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "vscode"
 }
