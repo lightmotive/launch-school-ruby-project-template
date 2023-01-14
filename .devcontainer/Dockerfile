@@ -12,7 +12,7 @@ RUN git config --global init.defaultBranch main
 
 # Install additional OS packages:
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-  && apt-get -y install --no-install-recommends tree
+  && apt-get -y install --no-install-recommends tree postgresql-client
 
 # Install additional gems:
 RUN gem install rubocop

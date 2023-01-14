@@ -22,7 +22,16 @@ If you need a container for production use, consider the [official Docker Ruby i
 
 1. Copy the following to a project's root folder:
    1. **.devcontainer** folder
-      1. In the *devcontainer.json* file in this folder, edit the `"name"` property to something that makes sense for the project.
+      - **TODOS:**
+        - In the *devcontainer.json* file in this folder, edit the `"name"` property to something that makes sense for the project.
+        - Add a `.env` file containing following variables (make sure that file is excluded via .gitignore):
+
+          ```text
+          POSTGRES_USER=app_dev
+          POSTGRES_PASSWORD=REPLACE_with_your_secure_password!
+          ```
+
+          - Note: the user and password above will only be set when initially creating the `postgres-data` Docker volume. Rebuilding the container does not delete the volume, and so would not change the initial password if you simply change your `.env` file. To change the password after initial creation, use `psql` or another admin tool, then update your `.env` for next time. Or, delete the container and then the `postgres-data` Docker volume if it doesn't contain needed data, then rebuild the container.
       - `Dockerfile` declaratively defines container build, including Ruby v3-bullseye, rvm, zsh, Gems, Pry configuration, and more.
       - `devcontainer.json` configures VS Code and coordinates Docker Compose.
       - `docker-compose.yml` configures:
@@ -67,6 +76,20 @@ VS Code offers a number of advantages over REPL-based debugging, such as:
 - View a list of variables and their values in a breakpoint's scope.
 
 [Learn more here](https://code.visualstudio.com/docs/editor/debugging).
+
+### Connect to PostgreSQL
+
+#### PSQL
+
+Usually, one interacts with a database server remotely using a client. PSQL is one of those clients. Ensure *postgresql-client* has been installed when accessing the database that's running in a separate container.
+
+`psql -h db -p 5432 -U app_dev -W` (change `-U [username]` if you set a different username in your `.env`)
+
+- When prompted, enter the `POSTGRES_PASSWORD` value specified in your `.env` file.
+  - To view that file's contents: `cat ../.devcontainer/.env`
+
+[Documentation](https://www.postgresql.org/docs/current/app-psql.html)
+
 
 ## Create your own Ruby dev container
 

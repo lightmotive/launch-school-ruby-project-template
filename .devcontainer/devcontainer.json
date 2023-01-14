@@ -5,7 +5,7 @@
   "dockerComposeFile": [
     "docker-compose.yml"
   ],
-  "service": "ruby-container",
+  "service": "app",
   "shutdownAction": "none",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}/src",
   // Set *default* container specific settings.json values on container create.

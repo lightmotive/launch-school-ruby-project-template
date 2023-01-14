@@ -1,9 +1,7 @@
 version: '3.4'
 
 services:
-  ruby-container:
-    image: ruby-container
-
+  app:
     command: sleep infinity
 
     build:
@@ -17,9 +15,37 @@ services:
       - ../..:/workspaces:cached
 
     networks:
+      - db-server
       - plantuml-server
     ports:
       - '49152:49152'
+
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./create-db-user.sql:/docker-entrypoint-initdb.d/create-db-user.sql
+    networks:
+      - db-server
+    environment:
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      # Your config/database.yml should use the user and password you set here,
+      # and host "db" (as that's the name of this service). You can use whatever
+      # database name you want. Use `bin/rails db:prepare` to create the database.
+      #
+      # Example:
+      #
+      #  development:
+      #    <<: *default
+      #    host: db
+      #    username: postgres
+      #    password: postgres
+      #    database: myapp_development
+
+      # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
+      # (Adding the "ports" property to this file will not forward from a Codespace.)
 
   plantuml-container:
     image: 'plantuml/plantuml-server:jetty'
@@ -31,4 +57,9 @@ services:
       - '8080'
 
 networks:
+  db-server:
   plantuml-server:
+
+
+volumes:
+  postgres-data:
