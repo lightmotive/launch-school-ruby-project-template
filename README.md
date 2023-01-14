@@ -90,7 +90,6 @@ Usually, one interacts with a database server remotely using a client. PSQL is o
 
 [Documentation](https://www.postgresql.org/docs/current/app-psql.html)
 
-
 ## Create your own Ruby dev container
 
 After completing the pre-requisites above:
