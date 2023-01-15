@@ -13,7 +13,7 @@ cp -R ../.devcontainer/.pryrc /home/vscode/
 touch ~/.pgpass
 chmod 0600 ~/.pgpass
 echo "db:5432:*:$POSTGRES_USER:$POSTGRES_PASSWORD" >>~/.pgpass
-echo "\n** Automatic local PSQL login enabled for $POSTGRES_USER **\n"
+echo "** Automatic local PSQL login enabled for $POSTGRES_USER **"
 
 # Bundler dev env config
 bundle config set --local without production
