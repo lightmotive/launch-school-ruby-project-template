@@ -14,6 +14,8 @@ touch ~/.pgpass
 chmod 0600 ~/.pgpass
 echo "db:5432:*:$POSTGRES_USER:$POSTGRES_PASSWORD" >>~/.pgpass
 echo "** Automatic local PSQL login enabled for $POSTGRES_USER **"
+# Enable PSQL history
+touch ~/.psql_history
 
 # Bundler dev env config
 bundle config set --local without production
