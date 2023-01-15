@@ -32,6 +32,7 @@ If you need a container for production use, consider the [official Docker Ruby i
           ```
 
           - Note: the user and password above will only be set when initially creating the `postgres-data` Docker volume. Rebuilding the container does not delete the volume, and so would not change the initial password if you simply change your `.env` file. To change the password after initial creation, use `psql` or another admin tool, then update your `.env` for next time. Or, delete the container and then the `postgres-data` Docker volume if it doesn't contain needed data, then rebuild the container.
+          - The same username and password are used when `postCreateCommand.sh` creates a password file, `~/.pgpass`, which enables automatic local `psql` logins. See [PSQL](#psql) for details.
       - `Dockerfile` declaratively defines container build, including Ruby v3-bullseye, rvm, zsh, Gems, Pry configuration, and more.
       - `devcontainer.json` configures VS Code and coordinates Docker Compose.
       - `docker-compose.yml` configures:
@@ -83,10 +84,10 @@ VS Code offers a number of advantages over REPL-based debugging, such as:
 
 Usually, one interacts with a database server remotely using a client. PSQL is one of those clients. Ensure *postgresql-client* has been installed when accessing the database that's running in a separate container.
 
-`psql -h db -p 5432 -U app_dev -W` (change `-U [username]` if you set a different username in your `.env`)
+`psql -h db -p 5432 -U app_dev` (change `-U [username]` if you set a different username in your `.env`)
 
-- When prompted, enter the `POSTGRES_PASSWORD` value specified in your `.env` file.
-  - To view that file's contents: `cat ../.devcontainer/.env`
+- Automatic login using the `POSTGRES_USER` and `POSTGRES_PASSWORD` values specified in your `.env` file is configured during dev environment creation with the creation of a `~/.pgpass` password file.
+  - More information [here](https://www.postgresql.org/docs/current/libpq-pgpass.html).
 
 [Documentation](https://www.postgresql.org/docs/current/app-psql.html)
 
