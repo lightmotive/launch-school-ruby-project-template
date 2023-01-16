@@ -25,6 +25,9 @@ services:
     restart: unless-stopped
     volumes:
       - postgres-data:/var/lib/postgresql/data
+      # The next line runs scripts during DB init only; more here:
+      # - https://hub.docker.com/_/postgres/#:~:text=POSTGRES_USER%2C%20and%20POSTGRES_DB.-,initialization%20scripts,-If%20you%20would
+      # - https://stackoverflow.com/questions/26598738/how-to-create-user-database-in-script-for-docker-postgres
       - ./create-db-user.sql:/docker-entrypoint-initdb.d/create-db-user.sql
     networks:
       - db-server
