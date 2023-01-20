@@ -15,13 +15,7 @@
     "ruby.useLanguageServer": true,
     "[ruby]": {
       "editor.defaultFormatter": "misogi.ruby-rubocop"
-    },
-    "plantuml.urlFormat": "svg",
-    "plantuml.exportOutDir": "/",
-    "plantuml.diagramsRoot": "/",
-    "plantuml.exportFormat": "svg",
-    "plantuml.server": "http://plantuml:8080",
-    "plantuml.render": "PlantUMLServer"
+    }
   },
   // Add the IDs of extensions you want installed when the container is created.
   "extensions": [
@@ -29,7 +23,6 @@
     "misogi.ruby-rubocop",
     "yzhang.markdown-all-in-one",
     "maciejdems.terminal-sync",
-    "jebbs.plantuml",
     "ms-vscode.live-server"
   ],
   // Use 'forwardPorts' to make a list of ports inside the container available locally.

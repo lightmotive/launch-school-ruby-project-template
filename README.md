@@ -38,7 +38,7 @@ If you need a container for production use, consider the [official Docker Ruby i
       - `docker-compose.yml` configures:
         - Shared network
         - Ruby dev container (service)
-        - PlantUML container (service)
+        - PostgreSQL database container
       - `.vscode` folder. If you need to make persistent changes to the contents of this folder, or to anything else in this repository, be sure to fork or copy this repo and modify there for your purposes. **This folder will completely replace anything in `{workspaceFolder}/.vscode` when the container is created or rebuilt.**
       - `.pryrc`: *pry* Gem configuration. Copied to home folder via `postCreateCommand.sh`.
       - `postCreateCommand.sh`: devcontainer.json's `postCreateCommand` executes this after the container is created.
