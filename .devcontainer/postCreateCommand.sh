@@ -1,37 +1,55 @@
 #!/bin/bash
 
 # Current working directory: "workspaceFolder" set in devcontainer.json
+DEVCONTAINER_CONFIG_PATH="$(readlink -e ../.devcontainer)"
 
 # Import `.env` variables for use below
-if [ -f ../.devcontainer/.env ]; then
-  export $(cat ../.devcontainer/.env | xargs)
+if [ -f $DEVCONTAINER_CONFIG_PATH/.env ]; then
+  export $(cat $DEVCONTAINER_CONFIG_PATH/.env | xargs)
 fi
 
 rm -rf ./.vscode
-cp -R ../.devcontainer/.vscode ./
-cp -R ../.devcontainer/.pryrc /home/vscode/
+cp -R $DEVCONTAINER_CONFIG_PATH/.vscode ./
+cp -R $DEVCONTAINER_CONFIG_PATH/.pryrc /home/vscode/
 
 # Allow known repos with locally renamed directories
 # git config --global --add safe.directory ./renamed_dir
 
-# Set the default CLI editor for Bash and Zsh:
-EDITOR_COMMAND="code -w"
+# ** PostgreSQL params **
+POSTGRES_HOST=db
+POSTGRES_PORT=5432
+POSTGRES_PGPASS_DB_LIST=*
+
+# ** Configure Bash and Zsh profiles **
+CLI_EDITOR_COMMAND="code -w"
+DEVCONTAINER_COMMANDS_FILENAME=.devcontainer_commands.sh
+cp $DEVCONTAINER_CONFIG_PATH/$DEVCONTAINER_COMMANDS_FILENAME ~
+EXPORT_DPSQL_CONNECT="export DPSQL_CONNECT=( psql -h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER )"
+SOURCE_MY_COMMANDS="source ~/$DEVCONTAINER_COMMANDS_FILENAME"
 
 cat <<EOF | cat >>~/.bashrc
 # Default CLI editor: VS Code
-export EDITOR="$EDITOR_COMMAND"
+export EDITOR="$CLI_EDITOR_COMMAND"
+
+# Add custom commands
+$EXPORT_DPSQL_CONNECT
+$SOURCE_MY_COMMANDS
 EOF
 
 cat <<EOF | cat >>~/.zshrc
 # Default CLI editor: VS Code
-export VISUAL="$EDITOR_COMMAND"
+export VISUAL="$CLI_EDITOR_COMMAND"
+
+# Add custom commands
+$EXPORT_DPSQL_CONNECT
+$SOURCE_MY_COMMANDS
 EOF
 
 # Enable automatic local login using password file
 touch ~/.pgpass
 chmod 0600 ~/.pgpass
-echo "db:5432:*:$POSTGRES_USER:$POSTGRES_PASSWORD" >>~/.pgpass
-echo "** Automatic local PSQL login enabled for $POSTGRES_USER **"
+echo "$POSTGRES_HOST:$POSTGRES_PORT:$POSTGRES_PGPASS_DB_LIST:$POSTGRES_USER:$POSTGRES_PASSWORD" >>~/.pgpass
+echo "** Automatic local PSQL login enabled for $POSTGRES_USER. Use $(dpsql) command to connect. **"
 
 # Bundler dev env config
 bundle config set --local without production
