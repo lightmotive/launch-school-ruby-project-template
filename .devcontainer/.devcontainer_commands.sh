@@ -9,8 +9,6 @@ function dpsql() {
   fi
 
   # Execute default `psql` connect command with params appended
-  echo "params from 1: ${@:1:99}"
   DPSQL_CONNECT+=("${@:1:99}")
-  echo "final cmd: ${DPSQL_CONNECT[@]}"
   "${DPSQL_CONNECT[@]}"
 }
