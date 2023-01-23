@@ -10,5 +10,6 @@ function dpsql() {
 
   # Execute default `psql` connect command with params appended
   DPSQL_CONNECT+=("${@:1:99}")
+  echo "[dpsql w/ (~/.pgpass)]: ${DPSQL_CONNECT[@]}"
   "${DPSQL_CONNECT[@]}"
 }
