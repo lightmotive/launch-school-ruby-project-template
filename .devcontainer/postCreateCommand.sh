@@ -12,9 +12,6 @@ rm -rf ./.vscode
 cp -R $DEVCONTAINER_CONFIG_PATH/.vscode ./
 cp -R $DEVCONTAINER_CONFIG_PATH/.pryrc /home/vscode/
 
-# Allow known repos with locally renamed directories
-# git config --global --add safe.directory ./renamed_dir
-
 # ** PostgreSQL params **
 POSTGRES_HOST=db
 POSTGRES_PORT=5432
@@ -57,3 +54,10 @@ bundle config set --local without production
 # Heroku CLI w/ auto-update
 # Guide: https://devcenter.heroku.com/articles/heroku-cli
 curl https://cli-assets.heroku.com/install.sh | sh
+
+# Execute custom commands, if any
+if [ -f $DEVCONTAINER_CONFIG_PATH/postCreateCommandCustom.sh ]; then
+  echo "Executing custom commands..."
+  chmod 0600 $DEVCONTAINER_CONFIG_PATH/postCreateCommandCustom.sh
+  bash $DEVCONTAINER_CONFIG_PATH/postCreateCommandCustom.sh
+fi

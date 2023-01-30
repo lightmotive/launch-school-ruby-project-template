@@ -42,6 +42,7 @@ If you need a container for production use, consider the [official Docker Ruby i
       - `.vscode` folder. If you need to make persistent changes to the contents of this folder, or to anything else in this repository, be sure to fork or copy this repo and modify there for your purposes. **This folder will completely replace anything in `{workspaceFolder}/.vscode` when the container is created or rebuilt.**
       - `.pryrc`: *pry* Gem configuration. Copied to home folder via `postCreateCommand.sh`.
       - `postCreateCommand.sh`: devcontainer.json's `postCreateCommand` executes this after the container is created.
+        - Add custom commands to the `postCreateCommandCustom.sh` file, which `postCreateCommand.sh` will execute when it's finished.
    2. **src** folder
       - Create or clone code repos here.
       - VS Code uses this folder the Workspace folder, which is the Explorer root.
@@ -95,6 +96,7 @@ Usually, one interacts with a database server remotely using a client. PSQL is o
 - `dpsql`: connect to Postgres via `psql` with `.env`-specifed username and default host (`db`) + port (`5432`).
 - `dpsql --show-command`: show the command that would execute.
 - `dpsql [any psql commands]`: all arguments are forwarded to `psql`.
+  - The same is available for `createdb` (use `dcreatedb`) and `dropdb` (use `ddropdb`).
 
 ## Create your own Ruby dev container
 
