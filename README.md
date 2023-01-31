@@ -42,7 +42,7 @@ If you need a container for production use, consider the [official Docker Ruby i
       - `.vscode` folder. If you need to make persistent changes to the contents of this folder, or to anything else in this repository, be sure to fork or copy this repo and modify there for your purposes. **This folder will completely replace anything in `{workspaceFolder}/.vscode` when the container is created or rebuilt.**
       - `.pryrc`: *pry* Gem configuration. Copied to home folder via `postCreateCommand.sh`.
       - `postCreateCommand.sh`: devcontainer.json's `postCreateCommand` executes this after the container is created.
-        - Add custom commands to the `postCreateCommandCustom.sh` file, which `postCreateCommand.sh` will execute when it's finished.
+        - Add custom commands to the `postCreateCommandCustom.sh` file, which `postCreateCommand.sh` will execute when it's finished. It includes some common ones you can uncomment and customize.
    2. **src** folder
       - Create or clone code repos here.
       - VS Code uses this folder the Workspace folder, which is the Explorer root.
