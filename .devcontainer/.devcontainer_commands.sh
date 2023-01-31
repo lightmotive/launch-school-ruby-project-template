@@ -1,12 +1,13 @@
 #!/bin/zsh
 
 function pgcmd_with_conn_args() {
-  cmd=$1
+  cmds=($1)
+  cmds+=("${PGCMD_CONN_ARGS[@]}" "${@:2:99}")
 
   printf "Executing w/ default args & '~/.pgpass':\n"
-  printf "$cmd ${PGCMD_CONN_ARGS[@]} ${@:2:99}"
-  printf '\n'
-  cmds=($cmd "${PGCMD_CONN_ARGS[@]}" "${@:2:99}")
+  printf '%q ' "${cmds[@]}"
+  printf '\n\n'
+
   "${cmds[@]}"
 }
 
