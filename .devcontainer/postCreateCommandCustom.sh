@@ -8,4 +8,4 @@
 # git config --global user.name "Your Name (or username)"
 
 # Allow known repos with locally renamed directories
-# git config --global --add safe.directory ./renamed_dir
+# git config --global --add safe.directory $(readlink -e renamed_dir)
