@@ -23,7 +23,8 @@
     "misogi.ruby-rubocop",
     "yzhang.markdown-all-in-one",
     "maciejdems.terminal-sync",
-    "ms-vscode.live-server"
+    "ms-vscode.live-server",
+    "inferrinizzard.prettier-sql-vscode"
   ],
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
