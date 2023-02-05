@@ -10,6 +10,11 @@ RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/
 RUN git config --system init.defaultBranch main
 RUN git config --global init.defaultBranch main
 
+# Retrieve and configure to install latest PostgreSQL client.
+# - Without this, an older psql release will be installed.
+RUN sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+
 # Install additional OS packages:
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   && apt-get -y install --no-install-recommends tree postgresql-client
