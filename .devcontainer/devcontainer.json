@@ -31,6 +31,7 @@
   // "forwardPorts": [],
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "bash -i /workspaces/${localWorkspaceFolderBasename}/.devcontainer/postCreateCommand.sh",
+  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
   // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "vscode"
 }
